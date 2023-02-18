@@ -79,7 +79,7 @@ for epoch in tqdm(range(num_epoch)): # python进度条，num_epoch=50，所以�
         # 前向+ 反向 + 优化
         outputs = net(inputs)
         loss = loss_function(outputs, labels) # 计算loss
-        loss.backward() # 传回反向梯度
+        loss.backward() # 反向传播
         optimizer.step() # 梯度传回，利用优化器将参数更新
         losses += loss.data.item() # 输出统计
     print("*****************当前平均损失为{}*****************".format(losses/2000.0))
@@ -105,7 +105,7 @@ print("预测准确率为：{}/{}".format(correct, total))
 
 
 
-PATH1="./drive/My Drive/fgsm/mnist_net_all.pkl"
+PATH1="./drive/My Drive/fgsm/mnist_net_all.pkl" # 保存的模型
 torch.save(net,PATH1)
 
 PATH2="./drive/My Drive/fgsm/mnist_net_param.pkl"
